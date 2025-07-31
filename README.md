@@ -30,7 +30,7 @@ Quick starting guide for new extension devs:
 
 - Push all commits and tags to GitHub.
 
-- [GitHub Actions workflow](https://github.com/azot-labs/azot-extension-example/blob/main/.github/workflows/release.yml) will handle the rest.
+- [GitHub Actions workflow](https://github.com/azot-labs/azot-extension-example/blob/main/.github/workflows/release.yml) will handle the rest when new tags are pushed to GitHub.
 
 ## Adding your extension to the [community extension list](https://github.com/azot-labs/extensions/blob/main/extensions.json)
 
