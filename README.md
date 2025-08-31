@@ -21,6 +21,7 @@ Quick starting guide for new extension devs:
 - Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `main.js`.
 - Reload Azot to load the new version of your extension.
 - For updates to the Azot API run `npm i azot@latest` in the command line under your repo folder.
+- For testing we use `vitest` by default. Run `npm test` to run the test suite in `main.test.ts`.
 
 ## Releasing new releases
 

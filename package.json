@@ -25,14 +25,16 @@
   ],
   "scripts": {
     "dev": "azt dev",
-    "build": "azt build"
+    "build": "azt build",
+    "test": "vitest"
   },
   "engines": {
     "azot": ">=4.3.10"
   },
   "devDependencies": {
     "@types/node": "^24.2.1",
-    "azot": "^0.9.3",
-    "typescript": "^5.9.2"
+    "azot": "^5.0.0-alpha.3",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
   }
 }
