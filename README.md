@@ -42,7 +42,7 @@ Quick starting guide for new extension devs:
 ## How to use
 
 - Clone this repo.
-- Make sure your [Node.js](https://nodejs.org/en/download) is at least v20 (`node --version`).
+- Make sure your [Node.js](https://nodejs.org/en/download) is at least v24 (`node --version`).
 - `npm i` to install dependencies.
 - `npm run dev` to start compilation in watch mode.
 
