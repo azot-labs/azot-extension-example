@@ -29,12 +29,12 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@types/node": "^25.3.0",
-    "azot": "^5.0.0-alpha.11",
+    "@types/node": "^25.3.5",
+    "azot": "^5.0.0-alpha.15",
     "typescript": "^5.9.3",
     "vitest": "^4.0.18"
   },
   "engines": {
-    "azot": ">=5.0.0-alpha.40"
+    "azot": ">=5.0.0-alpha.51"
   }
 }
