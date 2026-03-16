@@ -30,7 +30,7 @@
   },
   "devDependencies": {
     "@types/node": "^25.5.0",
-    "azot": "^5.0.0-alpha.17",
+    "azot": "^5.0.0-alpha.18",
     "typescript": "^5.9.3",
     "vitest": "^4.1.0"
   },
