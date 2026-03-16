@@ -30,11 +30,11 @@
   },
   "devDependencies": {
     "@types/node": "^25.5.0",
-    "azot": "^5.0.0-alpha.16",
+    "azot": "^5.0.0-alpha.17",
     "typescript": "^5.9.3",
     "vitest": "^4.1.0"
   },
   "engines": {
-    "azot": ">=5.0.0-alpha.52"
+    "azot": ">=4.3.38"
   }
 }
