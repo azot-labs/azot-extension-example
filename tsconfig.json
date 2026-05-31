@@ -18,13 +18,19 @@
 
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": false,
+    "exactOptionalPropertyTypes": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
 
     // Recommended Options
     "strict": true,
+    "erasableSyntaxOnly": true,
     "esModuleInterop": true,
     "isolatedModules": true,
+    "forceConsistentCasingInFileNames": true,
     "noUncheckedSideEffectImports": true,
+    "noEmitOnError": true,
     "moduleDetection": "force",
     "skipLibCheck": true
   },

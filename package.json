@@ -2,14 +2,11 @@
   "name": "azot-extension-example",
   "version": "1.0.0",
   "description": "Demonstrates some of the capabilities of the Azot API.",
-  "homepage": "https://azot.mov/",
-  "config": {
-    "title": "Azot Extension Example",
-    "icon": "https://azot.mov/assets/logo-CzwwuC-B.png"
-  },
   "keywords": [
     "video"
   ],
+  "homepage": "https://azot.mov/",
+  "license": "MIT",
   "author": {
     "name": "Azot",
     "url": "https://azot.mov/"
@@ -18,21 +15,32 @@
     "type": "individual",
     "url": "https://azot.mov/pricing"
   },
-  "license": "MIT",
-  "main": "dist/main.cjs",
   "files": [
     "dist"
   ],
+  "main": "dist/main.cjs",
   "scripts": {
     "dev": "azt dev",
     "build": "azt build",
+    "typecheck": "tsc --noEmit",
+    "lint": "oxlint . --deny-warnings",
+    "lint:fix": "oxlint . --fix",
+    "format": "oxfmt --write .",
+    "format:check": "oxfmt --check .",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
     "test": "vitest"
   },
   "devDependencies": {
-    "@types/node": "^25.5.0",
+    "@types/node": "^25.9.1",
     "azot": "^5.0.0-alpha.18",
-    "typescript": "^5.9.3",
-    "vitest": "^4.1.0"
+    "oxfmt": "^0.52.0",
+    "oxlint": "^1.67.0",
+    "typescript": "^6.0.3",
+    "vitest": "^4.1.7"
+  },
+  "config": {
+    "icon": "https://azot.mov/assets/logo-CzwwuC-B.png",
+    "title": "Azot Extension Example"
   },
   "engines": {
     "azot": ">=4.3.38"

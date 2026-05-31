@@ -5,7 +5,7 @@ export default defineExtension({
     return new URL(url).hostname === 'bitmovin.com';
   },
 
-  async fetchContentMetadata(url, options) {
+  async fetchContentMetadata(url) {
     // https://bitmovin.com/demos/stream-test?format=dash
     const response = await fetch(url);
     const body = await response.text();
@@ -17,7 +17,10 @@ export default defineExtension({
     if (!mpd) return [];
 
     const source: ContentSource = { url: mpd };
-    const metadata: MovieMetadata = { title: filename, source };
+    const metadata: MovieMetadata = {
+      title: filename ?? 'Bitmovin Stream Test',
+      source,
+    };
     return [metadata];
   },
 });
