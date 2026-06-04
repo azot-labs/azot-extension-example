@@ -1,26 +1,25 @@
-import { defineExtension, type ContentSource, type MovieMetadata } from 'azot';
+import { defineExtension, type MediaEntry } from 'azot';
+
+const getFilename = (url: string) => url.split('/').pop()?.replace('.mpd', '');
+
+const findDashManifestUrl = (html: string) =>
+  html.split(/['"]/).find((value) => value.startsWith('https://') && value.endsWith('.mpd'));
 
 export default defineExtension({
-  canHandle(url) {
-    return new URL(url).hostname === 'bitmovin.com';
-  },
-
-  async fetchContentMetadata(url) {
+  async getEntries({ url }): Promise<MediaEntry[]> {
     // https://bitmovin.com/demos/stream-test?format=dash
     const response = await fetch(url);
-    const body = await response.text();
+    const html = await response.text();
 
     // https://cdn.bitmovin.com/content/assets/art-of-motion-dash-hls-progressive/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd
-    const mpd = body.split("'").find((line) => line.endsWith('.mpd'));
-    const filename = mpd?.split('/').pop()?.replace('.mpd', ''); // f08e80da-bf1d-4e3d-8899-f0f6155f6efa
+    const manifestUrl = findDashManifestUrl(html);
+    if (!manifestUrl) return [];
 
-    if (!mpd) return [];
-
-    const source: ContentSource = { url: mpd };
-    const metadata: MovieMetadata = {
-      title: filename ?? 'Bitmovin Stream Test',
-      source,
-    };
-    return [metadata];
+    return [
+      {
+        title: getFilename(manifestUrl) ?? 'Bitmovin Stream Test',
+        source: { url: manifestUrl },
+      },
+    ];
   },
 });

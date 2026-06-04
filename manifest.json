@@ -1,0 +1,6 @@
+{
+  "manifestVersion": 1,
+  "displayName": "Azot Extension Example",
+  "icon": "https://azot.mov/favicon.ico",
+  "matches": ["https://bitmovin.com/*", "https://*.bitmovin.com/*"]
+}
