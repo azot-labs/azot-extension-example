@@ -20,9 +20,9 @@ build_and_pack:
     paths:
       - "*.tgz"
       - "*.zip"
-      - "*.azt"
       - "package.json"
       - "manifest.json"
+      - "README.md"
     expire_in: 1 week
 
 release_job:
@@ -33,7 +33,7 @@ release_job:
     - |
       set -e
       assets_list=""
-      for f in *.tgz *.zip *.stx package.json; do
+      for f in *.tgz *.zip package.json manifest.json README.md; do
         if [ -f "$f" ]; then
           assets_list="$assets_list $f"
         fi
