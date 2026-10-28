@@ -1,25 +1,40 @@
-import { defineExtension, type MediaEntry } from 'azot';
+import { defineExtension, defineProvider, ExtensionError, type Entry } from 'azot';
 
-const getFilename = (url: string) => url.split('/').pop()?.replace('.mpd', '');
+const getFilename = (url: string) =>
+  new URL(url).pathname
+    .split('/')
+    .pop()
+    ?.replace(/\.mpd$/, '');
 
 const findDashManifestUrl = (html: string) =>
   html.split(/['"]/).find((value) => value.startsWith('https://') && value.endsWith('.mpd'));
 
 export default defineExtension({
-  async getEntries({ url }): Promise<MediaEntry[]> {
-    // https://bitmovin.com/demos/stream-test?format=dash
-    const response = await fetch(url);
-    const html = await response.text();
+  title: 'Azot Extension Example',
+  icon: 'https://bitmovin.com/wp-content/uploads/2023/11/bitmovin_favicon.svg',
+  bitmovin: defineProvider({
+    matches: ['https://*.bitmovin.com/*'],
 
-    // https://cdn.bitmovin.com/content/assets/art-of-motion-dash-hls-progressive/mpds/f08e80da-bf1d-4e3d-8899-f0f6155f6efa.mpd
-    const manifestUrl = findDashManifestUrl(html);
-    if (!manifestUrl) return [];
+    async list({ url }) {
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new ExtensionError({
+          code: 'MEDIA_UNAVAILABLE',
+          message: `Bitmovin page returned ${response.status} ${response.statusText}`,
+        });
+      }
+      const html = await response.text();
+      const manifestUrl = findDashManifestUrl(html);
+      if (!manifestUrl) return [];
 
-    return [
-      {
-        title: getFilename(manifestUrl) ?? 'Bitmovin Stream Test',
-        source: { url: manifestUrl },
-      },
-    ];
-  },
+      return [
+        {
+          title: getFilename(manifestUrl) || 'Bitmovin Stream Test',
+          kind: 'video',
+          pageUrl: url,
+          source: { url: manifestUrl, format: 'dash' },
+        },
+      ] satisfies Entry[];
+    },
+  }),
 });

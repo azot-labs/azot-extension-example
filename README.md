@@ -6,8 +6,8 @@ This project uses TypeScript to provide type checking and documentation. The rep
 
 This extension example demonstrates some of the basic functionality the extension API can do. [Bitmovin](https://bitmovin.com/demos/stream-test?format=dash) is used as an example of a service from which metadata is extracted for downloading.
 
-- Declares supported URL patterns in `manifest.json`.
-- Uses `getEntries` to parse media entries from a page URL.
+- Declares extension metadata with `defineExtension()` and supported URL patterns with `defineProvider()` in `main.ts`.
+- Uses the provider's `list()` method to parse media entries from a page URL.
 - Returns an entry with `source`, so Azot can create the downloadable resource automatically.
 
 ## First time developing extensions?
@@ -18,7 +18,7 @@ Quick starting guide for new extension devs:
 - Make a copy of this repo as a template with the "Use this template" button (login to GitHub if you don't see it).
 - Clone your repo to a local development folder.
 - Install [Node.js](https://nodejs.org/en/download), then run `npm i` in the command line under your repo folder.
-- Run `npm run dev` to compile your extension from `main.ts` to `dist/main.cjs`.
+- Run `npm run dev` to compile your extension from `main.ts` to `dist/main.cjs` and generate `manifest.json` from the metadata in code. Do not edit the generated manifest by hand.
 - Make changes to `main.ts` (or create new `.ts` files). Those changes should be automatically compiled into `dist/main.cjs`.
 - Reload Azot to load the new version of your extension.
 - For updates to the Azot API run `npm i azot@alpha` in the command line under your repo folder.

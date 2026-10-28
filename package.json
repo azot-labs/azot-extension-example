@@ -17,8 +17,10 @@
   },
   "files": [
     "dist",
-    "manifest.json"
+    "manifest.json",
+    "icon.*"
   ],
+  "type": "module",
   "main": "dist/main.cjs",
   "scripts": {
     "dev": "azot dev",
@@ -28,22 +30,19 @@
     "lint:fix": "oxlint . --fix",
     "format": "oxfmt --write .",
     "format:check": "oxfmt --check .",
-    "check": "npm run typecheck && npm run lint && npm run format:check && npm test",
+    "check": "npm run typecheck && npm run lint && npm run format:check && npm test -- --run",
     "test": "vitest"
   },
   "devDependencies": {
-    "@types/node": "^25.9.1",
-    "azot": "^5.0.0-alpha.32",
-    "oxfmt": "^0.52.0",
-    "oxlint": "^1.67.0",
+    "@types/node": "^24.0.0",
+    "azot": "^5.0.0-alpha.88",
+    "oxfmt": "^0.75.0",
+    "oxlint": "^1.90.0",
     "typescript": "^6.0.3",
-    "vitest": "^4.1.7"
-  },
-  "config": {
-    "icon": "https://azot.mov/assets/logo-CzwwuC-B.png",
-    "title": "Azot Extension Example"
+    "vitest": "^5.0.5"
   },
   "engines": {
-    "azot": ">=5.0.0-alpha.32"
+    "azot": ">=5.0.0-alpha.88",
+    "node": ">=24.22.1"
   }
 }

@@ -4,5 +4,5 @@
   "singleQuote": true,
   "semi": true,
   "trailingComma": "all",
-  "ignorePatterns": [".github", "*.yml", "*.yaml", "package-lock.json"]
+  "ignorePatterns": [".github", "*.yml", "*.yaml", "package-lock.json", "manifest.json"]
 }
